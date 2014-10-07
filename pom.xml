@@ -16,6 +16,8 @@
 		<hibernate.version>4.2.15.FINAL</hibernate.version>
 		<common-dbcp.version>2.0.1</common-dbcp.version>
 		<mysql.version>5.1.32</mysql.version>
+		<log4j.version>1.2.17</log4j.version>
+		<slf4j.version>1.7.7</slf4j.version>
 	</properties>
 
 	<dependencies>
@@ -58,7 +60,22 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<version>${mysql.version}</version>
 		</dependency>
-
+		<!-- 配置hibernate日志 -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>${slf4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${slf4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>${log4j.version}</version>
+		</dependency>
 
 	</dependencies>
 </project>

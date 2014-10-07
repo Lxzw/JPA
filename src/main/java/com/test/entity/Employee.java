@@ -7,6 +7,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -31,11 +34,15 @@ public class Employee {
 	
 	private String name;
 	
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name="depart_id")
 	private Department department;
 	
 	@OneToMany
+	@JoinTable(name="emp_proj_",
+		joinColumns=@JoinColumn(name="emp_id"),
+		inverseJoinColumns=@JoinColumn(name="proj_id")
+	)
 	private List<Project> projects;
 
 	public String getName() {
