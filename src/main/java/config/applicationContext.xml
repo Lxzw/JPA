@@ -13,6 +13,7 @@
   http://www.springframework.org/schema/aop/spring-aop.xsd">
 
 	<!-- 在应用层，只要能够配置aop，bean，tx等 -->
+	<context:component-scan base-package="com.test.dao"/>
 
 	<!-- 获取属性文件 -->
 	<context:property-placeholder location="config/jdbc.properties"/>
@@ -35,6 +36,7 @@
 		<property name="packagesToScan">
 			<array>
 				<value>com.moke.jpa.ordermanager.entity</value>
+				<value>com.test.entity</value>
 			</array>
 		</property>
 		<property name="namingStrategy" ref="hibernateNamingStrategy" />
@@ -44,6 +46,7 @@
 				<prop key="hibernate.show_sql">${h.show_sql}</prop>
 				<prop key="hibernate.current_session_context_class">${h.current_session_context_class}</prop>
 				<prop key="hibernate.hbm2ddl.auto">update</prop>
+<!-- 				<prop key="hibernate.query.factory_class">${h.query.factory_class}</prop> -->
 			</props>
 		</property>
 		<!-- <property name="entityInterceptor" value=""></property> -->
