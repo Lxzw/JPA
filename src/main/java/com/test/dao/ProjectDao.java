@@ -2,6 +2,7 @@ package com.test.dao;
 
 import java.util.List;
 
+import com.moke.jpa.util.Page;
 import com.test.entity.Project;
 
 /**
@@ -19,7 +20,7 @@ import com.test.entity.Project;
  */
 public interface ProjectDao {
 	
-	public  List<Project> findAllProjects();
+	public  List<Project> findAllProjects(Page<Project> page);
 
 	public Project findById(Integer id);
 	

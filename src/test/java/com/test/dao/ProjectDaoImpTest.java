@@ -6,6 +6,7 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.moke.jpa.util.Page;
 import com.test.entity.Project;
 
 public class ProjectDaoImpTest {
@@ -15,7 +16,13 @@ public class ProjectDaoImpTest {
 	@Test
 	public void testFindAllProjects() {
 		ProjectDao projectDao = ctx.getBean(ProjectDaoImp.class);
-		System.out.println(projectDao.findAllProjects().size());
+		int i = 0;
+		Page<Project> page = new Page(3,1,8);
+		for (Project project : projectDao.findAllProjects(page)) {
+			System.out.println("projectId = " + project.getId() 
+					+ "; projectName=" + project.getName() 
+					+ "; Count= " + (++i));
+		}
 	}
 
 	@Test
