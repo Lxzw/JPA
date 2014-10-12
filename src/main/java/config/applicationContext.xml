@@ -37,6 +37,7 @@
 			<array>
 				<value>com.moke.jpa.ordermanager.entity</value>
 				<value>com.test.entity</value>
+				<value>com.moke.jpa.usermanager.entity</value>
 			</array>
 		</property>
 		<property name="namingStrategy" ref="hibernateNamingStrategy" />

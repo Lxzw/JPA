@@ -22,7 +22,9 @@ import com.test.entity.Project;
 
 @Repository
 public class ProjectDaoImp implements ProjectDao {
+	
 	private Logger logger = LoggerFactory.getLogger(getClass());
+	
 	@Autowired
 	private SessionFactory sessionFactory;
 	
