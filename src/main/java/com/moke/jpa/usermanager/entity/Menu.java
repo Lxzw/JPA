@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -23,7 +24,13 @@ public class Menu {
 	
 	private String url;
 	
-//	private Menu  submenu;
+	@OneToMany
+	@JoinTable(
+			name="menu_tree",
+			joinColumns=@JoinColumn(name="menu_pid"),
+			inverseJoinColumns=@JoinColumn(name="menu_id")
+			)
+	private List<Menu>  submenu;
 	
 	@ManyToMany
 	@JoinTable(
