@@ -18,8 +18,8 @@ public class UserDaoTest {
 	@Test
 	public void testSave() {
 		User user = new User();
-		user.setAge(12);
-		user.setName("管理用户");
+		user.setAge(14);
+		user.setName("超级管理用户");
 		ctx.getBean(UserDao.class).save(user);
 	}
 
@@ -31,7 +31,7 @@ public class UserDaoTest {
 	@Test
 	public void testFindAll() {
 		List<User> users = new ArrayList<User>();
-		users = ctx.getBean(UserDao.class).findAll();
+		users = (List<User>)ctx.getBean(UserDao.class).findAll();
 		for (User u : users) {
 			System.out.println("用户名：" + u.getName() + "&" + "年龄：" + u.getAge());
 		}

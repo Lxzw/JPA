@@ -6,13 +6,13 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.orm.hibernate3.HibernateAccessor;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.moke.jpa.usermanager.entity.User;
 
 @Repository
-@Transactional
 public class UserDao {
 	
 	@Autowired
@@ -29,12 +29,15 @@ public class UserDao {
 		
 	}
 	
+	@SuppressWarnings("unchecked")
 	public  List<User> findAll() {
 		String hsql = "FROM User u";
 		List<User> users = new ArrayList<User>();
 		Session session = sessionFactory.getCurrentSession();
-		users = session.createSQLQuery(hsql).list();
+		session.beginTransaction();
+		users = session.createQuery(hsql).list();
 		session.getTransaction().commit();
 		return users;
 	}
+
 }
