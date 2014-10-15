@@ -25,7 +25,11 @@ public class UserDaoTest {
 
 	@Test
 	public void testSaveOrUpdate() {
-		fail("Not yet implemented");
+		User user = new User();
+		user.setId(1L);
+		user.setName("妈妈咪呀");
+		user.setAge(44);
+		ctx.getBean(UserDao.class).saveOrUpdate(user);
 	}
 
 	@Test
@@ -35,6 +39,12 @@ public class UserDaoTest {
 		for (User u : users) {
 			System.out.println("用户名：" + u.getName() + "&" + "年龄：" + u.getAge());
 		}
+	}
+	
+	@Test
+	public void testFindById() {
+		User u = ctx.getBean(UserDao.class).findById(1L);
+		System.out.println("用户名：" + u.getName() + "&" + "年龄：" + u.getAge());
 	}
 
 }

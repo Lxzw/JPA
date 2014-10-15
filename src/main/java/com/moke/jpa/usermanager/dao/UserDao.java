@@ -26,7 +26,30 @@ public class UserDao {
 	}
 	
 	public void saveOrUpdate(User user)  {
+		Session session = sessionFactory.getCurrentSession();
+		if (user.getId() != null) {
+			if (user.equals(findById(user.getId()))) {
+				session.beginTransaction();
+				session.createQuery("UPDATE User u SET u.name = ?1,u.age =?2 WHERE u.id = ?3")
+				.setParameter(1, user.getName())
+				.setParameter(2, user.getAge())
+				.setParameter(3, user.getId()).executeUpdate();
+				session.getTransaction().commit();
+			} else {
+		//		session.getTransaction().commit();
+			}
+		} else {
+			session.beginTransaction();
+			session.save(user);
+			session.getTransaction().commit();
+		}
 		
+//		session.createQuery("UPDATE User u " 
+//		+ "SET u.name = ?1" 
+//		+ "WHERE u.age = ?2")
+//		.setParameter(1, user.getName())
+//		.setParameter(2, user.getAge())
+//		.executeUpdate();
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -38,6 +61,15 @@ public class UserDao {
 		users = session.createQuery(hsql).list();
 		session.getTransaction().commit();
 		return users;
+	}
+	
+	public User findById(Long id) {
+		User user = new User();
+		Session session = sessionFactory.getCurrentSession();
+		session.beginTransaction();
+		user = (User) session.get(User.class, user.setId(id));
+		session.getTransaction().commit();
+		return user;
 	}
 
 }
