@@ -27,7 +27,7 @@ public class UserDaoTest {
 	public void testSaveOrUpdate() {
 		User user = new User();
 		user.setId(1L);
-		user.setName("妈妈咪呀");
+		user.setName("妈呀");
 		user.setAge(44);
 		ctx.getBean(UserDao.class).saveOrUpdate(user);
 	}
