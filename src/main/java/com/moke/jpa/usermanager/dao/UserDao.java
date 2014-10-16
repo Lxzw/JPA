@@ -12,6 +12,16 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.moke.jpa.usermanager.entity.User;
 
+/**
+ * 
+ * @author L-win8 
+ *
+ * 2014年10月16日 下午11:52:57
+ * 
+ * @功能
+ * 			1. crud
+ * 			2. 表联结
+ */
 @Repository
 public class UserDao {
 	
